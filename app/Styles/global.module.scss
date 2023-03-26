@@ -1,6 +1,17 @@
+@font-face {
+  font-family: 'Mona Sans';
+  src:
+    url('Fonts/Mona-Sans.woff2') format('woff2 supports variations'),
+    url('Fonts/Mona-Sans.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
 $main-black: #121212;
 $main-white: #FFFFFF;
 $background: #F9F9F9;
+
+$main-font: 'Mona Sans';
 
 $fs-85: 0.85rem; // 13.6px
 $fs-90: 0.9rem; // 14.4px
@@ -24,4 +35,5 @@ $fs-500: 5rem; // 80px
   box-sizing: border-box;
   background-color: $background;
   min-height: 100vh;
+  font-family: $main-font;
 }

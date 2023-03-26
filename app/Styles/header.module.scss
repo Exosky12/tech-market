@@ -1,18 +1,88 @@
 @import 'global.module.scss';
 
-
 .header {
-  background: $main-black;
-  height: auto;
-  width: 100vw;
+	background: $main-black;
+	height: auto;
+	width: 100vw;
+	font-size: $fs-100;
 
-  .MainNav{
-    width: 100vw;
-    height: 60px;
-  }
+	.MainNav {
+		max-width: 100%;
+		padding: 0 40px;
+		height: 72px;
+		display: flex;
+		justify-content: space-between;
 
-  .SubNav {
-    width: 100vw;
-    height: 30px;
-  }
+		a {
+			color: $main-white;
+			text-decoration: none;
+			font-weight: 400;
+			font-stretch: 125%;
+		}
+
+		.LeftNav {
+			display: flex;
+			align-items: center;
+      min-width: 800px;
+
+			a {
+				padding: 0 30px;
+			}
+		}
+
+		.RightNav {
+			display: flex;
+			align-items: center;
+      display: flex;
+      flex-grow: 1;
+
+			.SearchContainer {
+				height: 40px;
+        flex-grow: 1;
+        position: relative;
+
+				img {
+					position: absolute;
+					left: 6px;
+					top: 4px;
+				}
+
+				input {
+					width: 100%;
+					height: 100%;
+					border-radius: 3px;
+					border: none;
+					padding: 0 5px 0 49px;
+				}
+			}
+			.RightNavIcons {
+				display: flex;
+
+        a:nth-child(2){
+          margin-top: 2px;
+        }
+
+				a,
+				button {
+					padding: 0px 6px;
+				}
+
+        button {
+          background-color: #a5a5a5;
+          outline: none;
+          width: 32px;
+          height: 32px;
+          border-radius: 50px;
+          border: 2px solid #fff;
+          margin-left: 6px;
+          cursor: pointer;
+        }
+			}
+		}
+	}
+
+	.SubNav {
+		width: 100%;
+		height: 38px;
+	}
 }
