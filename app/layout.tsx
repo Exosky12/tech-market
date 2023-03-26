@@ -1,5 +1,6 @@
 import Providers from './providers';
-import { Header } from './components/Layout/Header/Header';
+import { Header } from './components/Header/Header';
+import styles from './styles/global.module.scss';
 
 export const metadata = {
 	title: 'Create Next App',
@@ -13,12 +14,12 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body>
+			<body className={styles.body}>
 				<Providers>
-          {/* @ts-expect-error Server Component */}
-          <Header/>
-          {children}
-        </Providers>
+					{/* @ts-expect-error Server Component */}
+					<Header />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);

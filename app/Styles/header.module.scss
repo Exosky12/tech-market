@@ -1,0 +1,18 @@
+@import 'global.module.scss';
+
+
+.header {
+  background: $main-black;
+  height: auto;
+  width: 100vw;
+
+  .MainNav{
+    width: 100vw;
+    height: 60px;
+  }
+
+  .SubNav {
+    width: 100vw;
+    height: 30px;
+  }
+}
