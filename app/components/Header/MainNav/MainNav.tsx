@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import styles from '../../../Styles/header.module.scss';
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export const MainNav = () => {
 	const [windowWidth, setWindowWidth] = useState<number>(0);
+	const [menuState, setMenuState] = useState<boolean>(false);
 
 	useEffect(() => {
 		function handleResize() {
@@ -18,15 +19,64 @@ export const MainNav = () => {
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
 
+	useEffect(() => {
+		const header = document.querySelector('.header');
+		if (header) {
+			if (menuState) {
+				header.classList.add('menuOpened');
+			} else {
+				header.classList.remove('menuOpened');
+			}
+		}
+	}, [menuState]);
+
 	const isMobile = windowWidth < 1180;
 
-	function toggleMenu() {
-		const header = document.querySelector('.header');
-		header?.classList.toggle('menu-opened');
-	}
+	const toggleMenu = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		setMenuState(!menuState);
+	};
 
 	return isMobile ? (
-		<p>Mobile</p>
+		<div className={styles.window}>
+			<div
+				className={
+					menuState
+						? `${styles.headerMobile} + ${styles.menuOpened}`
+						: styles.headerMobile
+				}>
+				<div className={styles.burgerContainer} onClick={(e) => toggleMenu(e)}>
+					<div id={styles.burger}>
+						<div className={`${styles.bar} ${styles.topBar}`}></div>
+						<div className={`${styles.bar} ${styles.btmBar}`}></div>
+					</div>
+				</div>
+				<div className={`${styles.icon} ${styles.iconApple}`}></div>
+				<ul className={styles.menu}>
+					<Link className={styles.menuItem} href=''>
+						Mac
+					</Link>
+					<Link className={styles.menuItem} href=''>
+						iPad
+					</Link>
+					<Link className={styles.menuItem} href=''>
+						iPhone
+					</Link>
+					<Link className={styles.menuItem} href=''>
+						Watch
+					</Link>
+					<Link className={styles.menuItem} href=''>
+						TV
+					</Link>
+					<Link className={styles.menuItem} href=''>
+						Music
+					</Link>
+					<Link className={styles.menuItem} href=''>
+						Support
+					</Link>
+				</ul>
+				<div className={`${styles.shop}  ${styles.iconBag}`}></div>
+			</div>
+		</div>
 	) : (
 		<nav className={styles.MainNav}>
 			<div className={styles.LeftNav}>

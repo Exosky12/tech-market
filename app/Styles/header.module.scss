@@ -79,211 +79,168 @@
 				}
 			}
 		}
-		.MobileNav {
-			max-width: 100%;
-			padding: 0 40px;
-			height: 72px;
+
+		a {
+			color: $main-white;
+			text-decoration: none;
+			font-weight: 400;
+			font-stretch: 125%;
+		}
+
+		.RightNavIcons {
 			display: flex;
-			justify-content: space-between;
 
-			@import url(https://fonts.googleapis.com/css?family=Ek+Mukta:200);
-
-			$cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
-			$mukta: 'Ek Mukta', sans-serif;
-
-			$menuItems: 7;
-
-			body {
-				margin: 0;
-				line-height: 1.4;
-				background: #e1e1e1;
+			a:nth-child(2) {
+				margin-top: 2px;
 			}
 
-			.window {
-				position: relative;
-				display: block;
-				width: 360px;
-				height: 567px;
-				margin: 100px auto 0;
-				box-shadow: 0 0 65px 15px rgba(#000, 0.2);
-				overflow: hidden;
-				border-radius: 3px;
-				background: #f1f1f1;
-				.header {
-					position: absolute;
-					display: block;
-					top: 0;
-					left: 0;
-					height: 50px;
-					width: 100%;
-					background: rgba(#000, 0.8);
-					overflow: hidden;
-					transition: all 0.5s ease-out, background 1s ease-out;
-					transition-delay: 0.2s;
-					z-index: 1;
-					.burger-container {
-						position: relative;
-						display: inline-block;
-						height: 50px;
-						width: 50px;
-						cursor: pointer;
-						transform: rotate(0deg);
-						transition: all 0.3s $cubic;
-						user-select: none;
-						-webkit-tap-highlight-color: transparent;
-						#burger {
-							width: 18px;
-							height: 8px;
-							position: relative;
-							display: block;
-							margin: -4px auto 0;
-							top: 50%;
-							.bar {
-								width: 100%;
-								height: 1px;
-								display: block;
-								position: relative;
-								background: #fff;
-								transition: all 0.3s $cubic;
-								transition-delay: 0s;
-								&.topBar {
-									transform: translateY(0px) rotate(0deg);
-								}
-								&.btmBar {
-									transform: translateY(6px) rotate(0deg);
-								}
-							}
-						}
-					}
-					.icon {
-						display: inline-block;
-						position: absolute;
-						height: 100%;
-						line-height: 50px;
-						width: 50px;
-						height: 50px;
-						text-align: center;
-						color: #fff;
-						font-size: 22px;
-						left: 50%;
-						transform: translateX(-50%);
-						&.icon-bag {
-							right: 0;
-							top: 0;
-							left: auto;
-							transform: translateX(0px);
-							transition: transform 0.5s $cubic;
-							transition-delay: 0.65s;
-						}
-					}
-					ul.menu {
-						position: relative;
-						display: block;
-						padding: 0px 48px 0;
-						list-style: none;
-						li.menu-item {
-							border-bottom: 1px solid #333;
-							margin-top: 5px;
-							transform: scale(1.15) translateY(-30px);
-							opacity: 0;
-							transition: transform 0.5s $cubic,
-								opacity 0.6s $cubic;
-							@for $i from 1 through $menuItems {
-								&:nth-child(#{$i}) {
-									transition-delay: #{0.56 - ($i * 0.07)}s;
-								}
-							}
-							a {
-								display: block;
-								position: relative;
-								color: #fff;
-								font-family: $mukta;
-								font-weight: 100;
-								text-decoration: none;
-								font-size: 22px;
-								line-height: 2.35;
-								font-weight: 200;
-								width: 100%;
-							}
-						}
-					}
-					&.menu-opened {
-						height: 100%;
-						background-color: #000;
-						transition: all 0.3s ease-in, background 0.5s ease-in;
-						transition-delay: 0.25s;
-						.burger-container {
-							transform: rotate(90deg);
-							#burger {
-								.bar {
-									transition: all 0.4s $cubic;
-									transition-delay: 0.2s;
-									&.topBar {
-										transform: translateY(4px) rotate(45deg);
-									}
-									&.btmBar {
-										transform: translateY(3px)
-											rotate(-45deg);
-									}
-								}
-							}
-						}
-						ul.menu {
-							li.menu-item {
-								transform: scale(1) translateY(0px);
-								opacity: 1;
-								@for $i from 1 through $menuItems {
-									&:nth-child(#{$i}) {
-										transition-delay: #{0.07 * $i + 0.2}s;
-									}
-								}
-							}
-						}
-						.icon {
-							&.icon-bag {
-								transform: translateX(75px);
-								transition-delay: 0.3s;
-							}
-						}
-					}
-				}
+			a,
+			button {
+				padding: 0px 6px;
 			}
 
-			a {
-				color: $main-white;
-				text-decoration: none;
-				font-weight: 400;
-				font-stretch: 125%;
-			}
-
-			.RightNavIcons {
-				display: flex;
-
-				a:nth-child(2) {
-					margin-top: 2px;
-				}
-
-				a,
-				button {
-					padding: 0px 6px;
-				}
-
-				button {
-					background-color: #a5a5a5;
-					outline: none;
-					width: 32px;
-					height: 32px;
-					border-radius: 50px;
-					border: 2px solid #fff;
-					margin-left: 6px;
-					cursor: pointer;
-				}
+			button {
+				background-color: #a5a5a5;
+				outline: none;
+				width: 32px;
+				height: 32px;
+				border-radius: 50px;
+				border: 2px solid #fff;
+				margin-left: 6px;
+				cursor: pointer;
 			}
 		}
 	}
+}
 
-	.SubNav {
+.SubNav {
+	width: 100%;
+	height: 38px;
+	position: absolute;
+	top: 72px;
+	background-color: red;
+}
+
+$cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
+$menuItems: 7;
+
+.window {
+	position: relative;
+	max-width: 100%;
+	padding: 0 40px;
+	height: 100vh;
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+	border-radius: 3px;
+	background-color: white;
+	.headerMobile {
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 0;
+		height: 72px;
 		width: 100%;
-		height: 38px;
+		background-color: $main-black;
+		transition: all 0.5s ease-out, background 1s ease-out;
+		transition-delay: 0.2s;
+		z-index: 1;
+		.burgerContainer {
+			position: relative;
+			display: inline-block;
+			height: 50px;
+			width: 50px;
+			cursor: pointer;
+			transform: rotate(0deg);
+			transition: all 0.3s $cubic;
+			user-select: none;
+			-webkit-tap-highlight-color: transparent;
+			#burger {
+				width: 18px;
+				height: 8px;
+				position: relative;
+				display: block;
+				margin: 0px auto 0;
+				top: 50%;
+				.bar {
+					width: 100%;
+					height: 2px;
+					display: block;
+					position: relative;
+					background: #fff;
+					transition: all 0.3s $cubic;
+					transition-delay: 0s;
+					&.topBar {
+						transform: translateY(3px) rotate(0deg);
+					}
+					&.btmBar {
+						transform: translateY(12px) rotate(0deg);
+					}
+				}
+			}
+		}
+
+		.menu {
+			position: relative;
+			display: block;
+			padding: 0px 48px 0;
+			list-style: none;
+			.menuItem {
+				border-bottom: 1px solid $main-black;
+				margin-top: 5px;
+				transform: scale(1.15) translateY(-30px);
+				opacity: 0;
+				transition: transform 0.5s $cubic, opacity 0.6s $cubic;
+				@for $i from 1 through $menuItems {
+					&:nth-child(#{$i}) {
+						transition-delay: #{0.56 - ($i * 0.07)}s;
+					}
+				}
+				a {
+					display: block;
+					position: relative;
+					color: #fff;
+					font-weight: 100;
+					text-decoration: none;
+					font-size: 22px;
+					line-height: 2.35;
+					font-weight: 200;
+					width: 100%;
+				}
+			}
+		}
+		&.menuOpened {
+			height: 150%;
+			background-color: $main-black;
+			transition: all 0.5s ease-in, background 0.5s ease-in;
+			transition-delay: 0.25s;
+			.burgerContainer {
+				transform: rotate(90deg);
+				transform: translate(0px);
+				#burger {
+					.bar {
+						transition: all 0.4s $cubic;
+						transition-delay: 0.2s;
+						&.topBar {
+							transform: translateY(5px) rotate(45deg);
+						}
+						&.btmBar {
+							transform: translateY(3px) rotate(-45deg);
+						}
+					}
+				}
+			}
+			.menu {
+				.menuItem {
+					transform: scale(1) translateY(0px);
+					opacity: 1;
+					@for $i from 1 through $menuItems {
+						&:nth-child(#{$i}) {
+							transition-delay: #{0.07 * $i + 0.2}s;
+						}
+					}
+				}
+			}
+		}
 	}
 }
