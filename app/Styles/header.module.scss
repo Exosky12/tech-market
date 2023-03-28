@@ -3,7 +3,7 @@
 .header {
 	background: $main-black;
 	height: auto;
-	width: 100vw;
+	max-width: 100vw;
 	font-size: $fs-100;
 
 	.MainNav {
@@ -122,7 +122,7 @@
 }
 
 $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
-$menuItems: 7;
+$menuItems: 6;
 
 .window {
 	position: relative;
@@ -131,7 +131,6 @@ $menuItems: 7;
 	height: 100vh;
 	display: flex;
 	justify-content: space-between;
-	overflow: hidden;
 	border-radius: 3px;
 	background-color: white;
 	.headerMobile {
@@ -181,13 +180,15 @@ $menuItems: 7;
 		}
 
 		.menu {
-			position: relative;
-			display: block;
-			padding: 0px 48px 0;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
 			list-style: none;
 			.menuItem {
-				border-bottom: 1px solid $main-black;
-				margin-top: 5px;
+				border-bottom: 1px solid $main-white;
+				width: 80%;
+				margin-top: 20px;
+				padding: 20px 0px;
 				transform: scale(1.15) translateY(-30px);
 				opacity: 0;
 				transition: transform 0.5s $cubic, opacity 0.6s $cubic;
@@ -196,21 +197,31 @@ $menuItems: 7;
 						transition-delay: #{0.56 - ($i * 0.07)}s;
 					}
 				}
-				a {
-					display: block;
-					position: relative;
-					color: #fff;
-					font-weight: 100;
-					text-decoration: none;
-					font-size: 22px;
-					line-height: 2.35;
-					font-weight: 200;
-					width: 100%;
+			}
+			.dropdown {
+				img {
+					margin-left: 10px;
 				}
+				div {
+					display: flex;
+					flex-direction: column;
+					margin-top: 10px;
+				}
+				a {
+					font-size: $fs-150;
+					margin-top: 30px;
+				}
+			}
+			a {
+				font-size: $fs-200;
+				text-decoration: none;
+				color: $main-white;
+				font-weight: 200;
+				font-stretch: 125%;
 			}
 		}
 		&.menuOpened {
-			height: 150%;
+			height: 140vh;
 			background-color: $main-black;
 			transition: all 0.5s ease-in, background 0.5s ease-in;
 			transition-delay: 0.25s;

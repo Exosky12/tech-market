@@ -6,8 +6,9 @@ import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
 
 export const MainNav = () => {
-	const [windowWidth, setWindowWidth] = useState<number>(0);
-	const [menuState, setMenuState] = useState<boolean>(false);
+	const [windowWidth, setWindowWidth] = useState(0);
+	const [menuState, setMenuState] = useState(false);
+	const [dropDown, setdropDown] = useState(false);
 
 	useEffect(() => {
 		function handleResize() {
@@ -36,6 +37,10 @@ export const MainNav = () => {
 		setMenuState(!menuState);
 	};
 
+	const toggleDropdown = () => {
+		setdropDown(!dropDown);
+	};
+
 	return isMobile ? (
 		<div className={styles.window}>
 			<div
@@ -44,37 +49,71 @@ export const MainNav = () => {
 						? `${styles.headerMobile} + ${styles.menuOpened}`
 						: styles.headerMobile
 				}>
-				<div className={styles.burgerContainer} onClick={(e) => toggleMenu(e)}>
+				<div
+					className={styles.burgerContainer}
+					onClick={(e) => toggleMenu(e)}>
 					<div id={styles.burger}>
 						<div className={`${styles.bar} ${styles.topBar}`}></div>
 						<div className={`${styles.bar} ${styles.btmBar}`}></div>
 					</div>
 				</div>
-				<div className={`${styles.icon} ${styles.iconApple}`}></div>
 				<ul className={styles.menu}>
 					<Link className={styles.menuItem} href=''>
-						Mac
+						Accueil
 					</Link>
 					<Link className={styles.menuItem} href=''>
-						iPad
+						Bons plans
 					</Link>
 					<Link className={styles.menuItem} href=''>
-						iPhone
+						Meilleures ventes
 					</Link>
 					<Link className={styles.menuItem} href=''>
-						Watch
+						Nouveautées
 					</Link>
 					<Link className={styles.menuItem} href=''>
-						TV
+						Promotions
 					</Link>
-					<Link className={styles.menuItem} href=''>
-						Music
-					</Link>
-					<Link className={styles.menuItem} href=''>
-						Support
-					</Link>
+					{dropDown ? (
+						<Link
+							className={`${styles.menuItem} ${styles.dropdown} ${styles.dropwDownOpened}`}
+							href=''
+							onClick={toggleDropdown}>
+							Tous les produits
+							<Image
+								src='dropdown.svg'
+								alt='Pictogramme de dropdown'
+								width={16}
+								height={9}
+							/>
+							<div>
+								<Link href=''>MacBook</Link>
+								<Link href=''>iMac</Link>
+								<Link href=''>Ordinateurs</Link>
+								<Link href=''>Pc Gamer</Link>
+								<Link href=''>Consoles de jeux</Link>
+								<Link href=''>Smartphones</Link>
+								<Link href=''>AirPods</Link>
+								<Link href=''>Ecouteurs</Link>
+								<Link href=''>Casques</Link>
+								<Link href=''>iPad</Link>
+								<Link href=''>TV</Link>
+							</div>
+						</Link>
+					) : (
+						<Link
+							className={`${styles.menuItem} ${styles.dropdown}`}
+							href=''
+							onClick={toggleDropdown}>
+							Tous les produits
+							<Image
+								src='dropdown.svg'
+								alt='Pictogramme de dropdown'
+								width={16}
+								height={9}
+							/>
+						</Link>
+					)}
 				</ul>
-				<div className={`${styles.shop}  ${styles.iconBag}`}></div>
 			</div>
 		</div>
 	) : (
