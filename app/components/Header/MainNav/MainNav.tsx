@@ -3,12 +3,13 @@
 import Link from 'next/link';
 import styles from '../../../Styles/header.module.scss';
 import Image from 'next/image';
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { MainNavMobile } from './MainNavMobile';
 
 export const MainNav = () => {
 	const [windowWidth, setWindowWidth] = useState(0);
 	const [menuState, setMenuState] = useState(false);
-	const [dropDown, setdropDown] = useState(false);
+	const [dropDown, setDropDown] = useState(false);
 
 	useEffect(() => {
 		function handleResize() {
@@ -34,88 +35,24 @@ export const MainNav = () => {
 	const isMobile = windowWidth < 1180;
 
 	const toggleMenu = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		e.preventDefault();
 		setMenuState(!menuState);
 	};
 
-	const toggleDropdown = () => {
-		setdropDown(!dropDown);
+	const toggleDropdown = (
+		e: React.MouseEvent<HTMLDivElement, MouseEvent>
+	) => {
+		e.preventDefault();
+		setDropDown(!dropDown);
 	};
 
 	return isMobile ? (
-		<div className={styles.window}>
-			<div
-				className={
-					menuState
-						? `${styles.headerMobile} + ${styles.menuOpened}`
-						: styles.headerMobile
-				}>
-				<div
-					className={styles.burgerContainer}
-					onClick={(e) => toggleMenu(e)}>
-					<div id={styles.burger}>
-						<div className={`${styles.bar} ${styles.topBar}`}></div>
-						<div className={`${styles.bar} ${styles.btmBar}`}></div>
-					</div>
-				</div>
-				<ul className={styles.menu}>
-					<Link className={styles.menuItem} href=''>
-						Accueil
-					</Link>
-					<Link className={styles.menuItem} href=''>
-						Bons plans
-					</Link>
-					<Link className={styles.menuItem} href=''>
-						Meilleures ventes
-					</Link>
-					<Link className={styles.menuItem} href=''>
-						Nouveautées
-					</Link>
-					<Link className={styles.menuItem} href=''>
-						Promotions
-					</Link>
-					{dropDown ? (
-						<Link
-							className={`${styles.menuItem} ${styles.dropdown} ${styles.dropwDownOpened}`}
-							href=''
-							onClick={toggleDropdown}>
-							Tous les produits
-							<Image
-								src='dropdown.svg'
-								alt='Pictogramme de dropdown'
-								width={16}
-								height={9}
-							/>
-							<div>
-								<Link href=''>MacBook</Link>
-								<Link href=''>iMac</Link>
-								<Link href=''>Ordinateurs</Link>
-								<Link href=''>Pc Gamer</Link>
-								<Link href=''>Consoles de jeux</Link>
-								<Link href=''>Smartphones</Link>
-								<Link href=''>AirPods</Link>
-								<Link href=''>Ecouteurs</Link>
-								<Link href=''>Casques</Link>
-								<Link href=''>iPad</Link>
-								<Link href=''>TV</Link>
-							</div>
-						</Link>
-					) : (
-						<Link
-							className={`${styles.menuItem} ${styles.dropdown}`}
-							href=''
-							onClick={toggleDropdown}>
-							Tous les produits
-							<Image
-								src='dropdown.svg'
-								alt='Pictogramme de dropdown'
-								width={16}
-								height={9}
-							/>
-						</Link>
-					)}
-				</ul>
-			</div>
-		</div>
+		<MainNavMobile
+			dropDown={dropDown}
+			menuState={menuState}
+			toggleMenu={toggleMenu}
+			toggleDropdown={toggleDropdown}
+		/>
 	) : (
 		<nav className={styles.MainNav}>
 			<div className={styles.LeftNav}>
