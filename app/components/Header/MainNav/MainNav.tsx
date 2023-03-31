@@ -3,13 +3,12 @@
 import Link from 'next/link';
 import styles from '../../../Styles/header.module.scss';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { MainNavMobile } from './MainNavMobile';
 
 export const MainNav = () => {
 	const [windowWidth, setWindowWidth] = useState(0);
 	const [menuState, setMenuState] = useState(false);
-	const [dropDown, setDropDown] = useState(false);
 
 	useEffect(() => {
 		function handleResize() {
@@ -39,20 +38,8 @@ export const MainNav = () => {
 		setMenuState(!menuState);
 	};
 
-	const toggleDropdown = (
-		e: React.MouseEvent<HTMLDivElement, MouseEvent>
-	) => {
-		e.preventDefault();
-		setDropDown(!dropDown);
-	};
-
 	return isMobile ? (
-		<MainNavMobile
-			dropDown={dropDown}
-			menuState={menuState}
-			toggleMenu={toggleMenu}
-			toggleDropdown={toggleDropdown}
-		/>
+		<MainNavMobile menuState={menuState} toggleMenu={toggleMenu} />
 	) : (
 		<nav className={styles.MainNav}>
 			<div className={styles.LeftNav}>

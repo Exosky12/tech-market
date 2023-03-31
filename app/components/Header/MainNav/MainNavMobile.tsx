@@ -4,19 +4,12 @@ import Image from 'next/image';
 
 type NavProps = {
 	menuState: boolean;
-	dropDown: boolean;
 	toggleMenu: Function;
-	toggleDropdown: Function;
 };
 
-export const MainNavMobile = ({
-	menuState,
-	dropDown,
-	toggleMenu,
-	toggleDropdown,
-}: NavProps) => {
+export const MainNavMobile = ({ menuState, toggleMenu }: NavProps) => {
 	return (
-		<div className={styles.window}>
+		<div className={styles.mobileContainer}>
 			<div
 				className={
 					menuState
@@ -47,47 +40,44 @@ export const MainNavMobile = ({
 					<Link className={styles.menuItem} href=''>
 						Promotions
 					</Link>
-					{dropDown ? (
-						<Link
-							className={`${styles.menuItem} ${styles.dropdown} ${styles.dropwDownOpened}`}
-							href=''
-							onClick={(e) => toggleDropdown(e)}>
-							Tous les produits
-							<Image
-								src='dropdown.svg'
-								alt='Pictogramme de dropdown'
-								width={16}
-								height={9}
-							/>
-							<div>
-								<Link href=''>MacBook</Link>
-								<Link href=''>iMac</Link>
-								<Link href=''>Ordinateurs</Link>
-								<Link href=''>Pc Gamer</Link>
-								<Link href=''>Consoles de jeux</Link>
-								<Link href=''>Smartphones</Link>
-								<Link href=''>AirPods</Link>
-								<Link href=''>Ecouteurs</Link>
-								<Link href=''>Casques</Link>
-								<Link href=''>iPad</Link>
-								<Link href=''>TV</Link>
-							</div>
-						</Link>
-					) : (
-						<Link
-							className={`${styles.menuItem} ${styles.dropdown}`}
-							href=''
-							onClick={(e) => toggleDropdown(e)}>
-							Tous les produits
-							<Image
-								src='dropdown.svg'
-								alt='Pictogramme de dropdown'
-								width={16}
-								height={9}
-							/>
-						</Link>
-					)}
+					<Link className={styles.menuItem} href=''>
+						Tous les produits
+					</Link>
 				</ul>
+			</div>
+			<div className={styles.RightNav}>
+				<div className={styles.SearchContainer}>
+					<Image
+						src='search.svg'
+						alt='Pictogramme de recherche'
+						width={32}
+						height={32}
+					/>
+					<input
+						className={styles.SearchInput}
+						type='search'
+						placeholder='Essayez iPhone13, AirPods Pro, PS5,...'
+					/>
+				</div>
+				<div className={styles.RightNavIcons}>
+					<Link href=''>
+						<Image
+							src='cart.svg'
+							alt='Pictogramme de panier'
+							width={32}
+							height={32}
+						/>
+					</Link>
+					<Link href=''>
+						<Image
+							src='favorite.svg'
+							alt='Pictogramme des favoris'
+							width={32}
+							height={32}
+						/>
+					</Link>
+					<button className={styles.account}></button>
+				</div>
 			</div>
 		</div>
 	);

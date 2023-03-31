@@ -2,9 +2,11 @@
 
 .header {
 	background: $main-black;
+	position: fixed;
+	width: 100vw;
 	height: auto;
-	max-width: 100vw;
 	font-size: $fs-100;
+	z-index: 1000;
 
 	.MainNav {
 		max-width: 100%;
@@ -35,6 +37,7 @@
 			align-items: center;
 			display: flex;
 			flex-grow: 1;
+			z-index: 100;
 
 			.SearchContainer {
 				height: 40px;
@@ -86,30 +89,6 @@
 			font-weight: 400;
 			font-stretch: 125%;
 		}
-
-		.RightNavIcons {
-			display: flex;
-
-			a:nth-child(2) {
-				margin-top: 2px;
-			}
-
-			a,
-			button {
-				padding: 0px 6px;
-			}
-
-			button {
-				background-color: #a5a5a5;
-				outline: none;
-				width: 32px;
-				height: 32px;
-				border-radius: 50px;
-				border: 2px solid #fff;
-				margin-left: 6px;
-				cursor: pointer;
-			}
-		}
 	}
 }
 
@@ -124,15 +103,15 @@
 $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 $menuItems: 6;
 
-.window {
+.mobileContainer {
 	position: relative;
 	max-width: 100%;
 	padding: 0 40px;
-	height: 100vh;
 	display: flex;
 	justify-content: space-between;
 	border-radius: 3px;
 	background-color: white;
+
 	.headerMobile {
 		position: absolute;
 		display: block;
@@ -147,19 +126,20 @@ $menuItems: 6;
 		.burgerContainer {
 			position: relative;
 			display: inline-block;
-			height: 50px;
-			width: 50px;
+			width: 18px;
+			height: 8px;
 			cursor: pointer;
 			transform: rotate(0deg);
 			transition: all 0.3s $cubic;
 			user-select: none;
+			margin: 20px 10px;
 			-webkit-tap-highlight-color: transparent;
 			#burger {
 				width: 18px;
 				height: 8px;
 				position: relative;
 				display: block;
-				margin: 0px auto 0;
+				margin: auto;
 				top: 50%;
 				.bar {
 					width: 100%;
@@ -167,8 +147,8 @@ $menuItems: 6;
 					display: block;
 					position: relative;
 					background: #fff;
-					transition: all 0.3s $cubic;
-					transition-delay: 0s;
+					overflow: hidden;
+					transition: all 0.5s ease-out, background 1s ease-out;
 					&.topBar {
 						transform: translateY(3px) rotate(0deg);
 					}
@@ -221,17 +201,15 @@ $menuItems: 6;
 			}
 		}
 		&.menuOpened {
-			height: 140vh;
+			height: 100vh;
 			background-color: $main-black;
 			transition: all 0.5s ease-in, background 0.5s ease-in;
-			transition-delay: 0.25s;
 			.burgerContainer {
 				transform: rotate(90deg);
 				transform: translate(0px);
 				#burger {
 					.bar {
 						transition: all 0.4s $cubic;
-						transition-delay: 0.2s;
 						&.topBar {
 							transform: translateY(5px) rotate(45deg);
 						}
@@ -252,6 +230,104 @@ $menuItems: 6;
 					}
 				}
 			}
+		}
+	}
+}
+
+.RightNav {
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+	z-index: 100;
+	height: 72px;
+
+	.SearchContainer {
+		height: 40px;
+		flex-grow: 1;
+		position: relative;
+
+		img {
+			position: absolute;
+			left: 38px;
+			z-index: 100;
+			top: 4px;
+		}
+
+		input {
+			margin-left: 0px;
+			width: 95%;
+			height: 100%;
+			right: 0;
+			border-radius: 3px;
+			border: none;
+			padding: 0 5px 0 49px;
+		}
+	}
+	.RightNavIcons {
+		display: flex;
+
+		a:nth-child(2) {
+			margin-top: 2px;
+		}
+
+		a,
+		button {
+			padding: 0px 6px;
+		}
+
+		button {
+			background-color: #a5a5a5;
+			outline: none;
+			width: 32px;
+			height: 32px;
+			border-radius: 50px;
+			border: 2px solid #fff;
+			margin-left: 6px;
+			cursor: pointer;
+		}
+	}
+}
+@media screen and (max-width: 1180px) {
+	.SearchContainer {
+		img {
+			left: 10px !important;
+		}
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.mobileContainer {
+		padding: 0 20px;
+	}
+	.SearchContainer {
+		input {
+			width: 90% !important;
+			margin-left: 40px !important;
+		}
+		img {
+			left: 47px !important;
+		}
+	}
+}
+@media screen and (max-width: 720px) {
+	.SearchContainer {
+		input {
+			width: 80% !important;
+			margin-left: 40px !important;
+		}
+		img {
+			left: 47px !important;
+		}
+	}
+}
+@media screen and (max-width: 430px) {
+	.SearchContainer {
+		input {
+			width: 80% !important;
+			margin-left: 30px !important;
+		}
+		img {
+			left: 35px !important;
 		}
 	}
 }
