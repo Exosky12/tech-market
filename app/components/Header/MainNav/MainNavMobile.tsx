@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../../../Styles/header.module.scss';
+import styles from '../../../Styles/mainNav.module.scss';
 import Image from 'next/image';
 
 type NavProps = {

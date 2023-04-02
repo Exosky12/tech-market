@@ -1,4 +1,4 @@
-import styles from '../../../Styles/header.module.scss';
+import styles from '../../../Styles/subNav.module.scss';
 import Link from 'next/link';
 
 export const SubNav = () => {

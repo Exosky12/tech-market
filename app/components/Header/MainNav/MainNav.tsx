@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import styles from '../../../Styles/header.module.scss';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { MainNavMobile } from './MainNavMobile';
+import styles from '../../../Styles/mainNav.module.scss';
 
 export const MainNav = () => {
 	const [windowWidth, setWindowWidth] = useState(0);
@@ -31,7 +31,7 @@ export const MainNav = () => {
 		}
 	}, [menuState]);
 
-	const isMobile = windowWidth < 1180;
+	const isMobile = windowWidth < 1200;
 
 	const toggleMenu = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		e.preventDefault();
